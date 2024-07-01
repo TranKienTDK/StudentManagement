@@ -1,0 +1,47 @@
+/* resources/static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+/* CSS cho đường link */
+a {
+    text-decoration: none; /* Xóa gạch chân dưới đường link */
+    color: #007bff; /* Màu chữ của đường link (màu xanh) */
+    font-weight: bold; /* Đậm chữ của đường link */
+}
+
+a:hover {
+    text-decoration: underline; /* Gạch chân dưới đường link khi rê chuột vào */
+}

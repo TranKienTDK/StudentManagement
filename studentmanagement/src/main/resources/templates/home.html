@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:spring="http://www.springframework.org/schema/data/rest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Home</title>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/student-list.js" defer></script>
+    <script src="/js/course-list.js" defer></script>
+    <script src="/js/general-management.js" defer></script>
+
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#" id="generalManagementLink">Quản lý chung</a>
+    <a href="#" id="studentManagementLink">Quản lý sinh viên</a>
+    <a href="#" id="courseManagementLink">Quản lý học phần</a>
+    <!-- Thêm nút đăng xuất -->
+    <a href="/logout" id="logoutLink" class="logout-link">Đăng xuất</a>
+</div>
+
+<div class="content">
+    <div id="generalManagement" class="management-section">
+        <div class="container container1">
+            <div class="table-name">General Management</div>
+            <div id="generalInfo" class="central-content">
+                <p>Number of Students: <span id="studentCount"></span></p>
+                <p>Number of Courses: <span id="courseCount"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="studentManagement" class="management-section active">
+        <div class="container">
+            <div class="table-name">Student Management List</div>
+            <div class="button-container">
+                <a th:href="@{/showFormForAdd}" class="btn btn-primary btn-sm mb-3 add-student-btn">Add Student</a>
+            </div>
+
+            <!-- Search input -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for students..">
+            </div>
+
+            <table>
+                <thead id="table-header">
+                <tr>
+                    <th>ID</th>
+                    <th>FullName</th>
+                    <th>DateOfBirth</th>
+                    <th>Email</th>
+                    <th>PhoneNumber</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                <!-- Student List -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="courseManagement" class="management-section">
+        <div class="container">
+            <div class="table-name">Course Management List</div>
+            <div class="button-container">
+                <a th:href="@{showFormForAddCourse}" class="btn btn-primary btn-sm mb-3 add-course-btn">Add Course</a>
+            </div>
+
+            <!-- Search input -->
+            <div class="search-container">
+                <input type="text" id="courseSearchInput" placeholder="Search for courses..">
+            </div>
+
+            <table>
+                <thead id="table-course-header">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Credits</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTableBody">
+                <!-- Course List -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

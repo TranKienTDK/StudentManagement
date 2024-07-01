@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên đăng ký</title>
+    <link rel="stylesheet" href="/css/student/students.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<p><a href="/home-page">Quay về trang chủ</a></p>
+<h1>Danh sách sinh viên đăng ký cho khóa học: <span th:text="${course.courseName}"></span></h1>
+<table id="studentTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Họ và tên</th>
+        <th>Mã khóa học</th>
+        <th>Tên khóa học</th>
+        <th>Trạng thái</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Dữ liệu sinh viên sẽ được thêm tự động bởi JavaScript -->
+    </tbody>
+</table>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+        var courseId = /* Lấy courseId từ Thymeleaf model */ [[${course.courseId}]];
+        $.ajax({
+            type: "GET",
+            url: "/api/registration/registered?courseId=" + courseId,
+            success: function(data) {
+                // Xử lý dữ liệu nhận được từ API
+                var students = data;
+                var tableBody = $('#studentTable tbody');
+                tableBody.empty(); // Xóa nội dung cũ của bảng
+
+                students.forEach(function(student) {
+                    var row = '<tr>' +
+                        '<td>' + student.studentId + '</td>' +
+                        '<td>' + student.studentName + '</td>' +
+                        '<td>' + student.courseId + '</td>' +
+                        '<td>' + student.courseName + '</td>' +
+                        '<td>' + student.status + '</td>' +
+                        '</tr>';
+                    tableBody.append(row);
+                });
+            },
+            error: function() {
+                alert("Đã xảy ra lỗi khi lấy dữ liệu từ API.");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Courses</title>
+    <link rel="stylesheet" href="/css/student/student-home.css">
+    <script src="/js/register-course.js" defer></script>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="sidebar-name">STUDENT HOME</h2>
+    <ul>
+        <li><a href="/studentHome">HOME</a></li>
+        <li><a href="/student-info">THÔNG TIN CÁ NHÂN</a></li>
+        <li><a href="/register-courses" id="register-courses">ĐĂNG KÝ HỌC PHẦN</a></li>
+        <li><a href="/logout">ĐĂNG XUẤT</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <!-- Thẻ ẩn để lưu trữ studentId -->
+    <input type="hidden" id="studentId" th:value="${student.studentId}" />
+
+    <h2>DANH SÁCH HỌC PHẦN</h2>
+    <!-- Search Bar -->
+    <input type="text" id="courseSearchInput" placeholder="Tìm kiếm theo tên học phần...">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Credits</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="availableCoursesTableBody">
+        <tr th:each="course : ${availableCourses}" id="course-[[${course.courseId}]]" th:data-course-id="${course.courseId}" th:data-course-name="${course.courseName}" th:data-course-description="${course.courseDescription}" th:data-credits="${course.credits}">
+            <td th:text="${course.courseId}"></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.courseDescription}"></td>
+            <td th:text="${course.credits}"></td>
+            <td><button class="register-btn">Register</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>DANH SÁCH HỌC PHẦN ĐÃ ĐĂNG KÝ</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Credits</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="registeredCoursesTableBody">
+        <tr th:each="courseRegistration : ${registeredCourses}" id="registered-course-[[${courseRegistration.course.courseId}]]" th:data-course-id="${courseRegistration.course.courseId}" th:data-course-name="${courseRegistration.course.courseName}" th:data-course-description="${courseRegistration.course.courseDescription}" th:data-credits="${courseRegistration.course.credits}">
+            <td th:text="${courseRegistration.course.courseId}"></td>
+            <td th:text="${courseRegistration.course.courseName}"></td>
+            <td th:text="${courseRegistration.course.courseDescription}"></td>
+            <td th:text="${courseRegistration.course.credits}"></td>
+            <td><button class="unregister-btn">Unregister</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

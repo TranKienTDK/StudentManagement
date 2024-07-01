@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #222831, #577B8D);
+}
+
+.container {
+    position: relative;
+    margin-top: 10px;
+}
+
+.table-name {
+    position: absolute;
+    min-width: 1000px;
+    background: linear-gradient(to right, #240750, #57A6A1);
+    min-height: 60px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -15px);
+    box-shadow: 0 0 20px 5px rgba(223, 245, 255, 0.5);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 0 20px 5px rgba(223, 245, 255, 0.5);
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+
+th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+th {
+    border: none;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    background-color: #f2f2f2; /* Light grey background */
+                color: #333; /* Darker text color */
+                text-align: left; /* Aligns text to the left */
+                border-bottom: 2px solid #ddd; /* Bottom border for headers */
+}
+
+ td {
+            padding: 10px; /* Padding inside each cell */
+            border-bottom: 1px solid #ddd; /* Bottom border for rows */
+            text-align: left; /* Aligns text to the left */
+        }
+
+        /* Alternating row colors */
+        tr:nth-child(even) {
+            background-color: #e1fbfe; /* Light grey background for even rows */
+        }
+
+        tr:nth-child(odd) {
+                    background-color: white; /* Light grey background for even rows */
+                }
+
+        /* Hover effect for rows */
+        tr:hover {
+            background-color: #f1f1f1; /* Slightly darker grey when hovering */
+        }
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Max width for smaller screens */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #f44336; /* Red */
+    color: white;
+    border-radius: 4px;
+}
+
+.modal-button:hover {
+    background-color: #d32f2f; /* Darker red */
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1d1716;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    background-color: #f3bc77;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    border-radius: 20px;
+}
+
+.sidebar a:hover {
+    background-color: #402a23;
+}
+
+.sidebar a.active {
+    background-color: #a55233; /* Màu đậm hơn so với mặc định */
+    color: #fff; /* Màu chữ trắng */
+}
+
+.content {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.management-section {
+    /*display: none;*/
+}
+
+.management-section.active {
+    display: block;
+}
+
+/* Ensure the container has a margin from the top to not overlap with the sidebar */
+.container {
+    margin-top: 20px;
+}
+
+.container1 {
+    padding-top: 150px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start; /* Align button to the left */
+    margin-bottom: 10px;
+}
+
+/* Style for the search input */
+.search-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start; /* Aligns the search input to the left */
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 400px; /* Maximum width of the search input */
+    padding: 10px;
+    border: 2px solid #ddd; /* Light grey border */
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none; /* Removes default outline on focus */
+}
+
+#searchInput:focus {
+    border-color: #57A6A1; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(87, 166, 161, 0.5); /* Add box shadow on focus */
+}
+
+#courseSearchInput {
+    width: 100%;
+    max-width: 400px; /* Maximum width of the search input */
+    padding: 10px;
+    border: 2px solid #ddd; /* Light grey border */
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none; /* Removes default outline on focus */
+}
+
+#courseSearchInput:focus {
+    border-color: #57A6A1; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(87, 166, 161, 0.5); /* Add box shadow on focus */
+}
+
+/* CSS cho thong so quan ly chung */
+.central-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    color: white;
+}
+
+.central-content p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.sidebar a.logout-link {
+    position: absolute;
+    width: 100%;
+    background-color: #f3bc77; /* Màu nền đỏ */
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    border-radius: 20px;
+    bottom: 0;
+}
+
+.sidebar a.logout-link:hover {
+    background-color: #d32f2f; /* Màu đỏ đậm khi di chuột qua */
+}
+
+

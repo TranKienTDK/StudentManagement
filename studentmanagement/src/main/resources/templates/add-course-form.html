@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:spring="http://www.springframework.org/schema/data/rest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/add-course-form.css">
+    <title>Add Course Form</title>
+    <script src="/js/add-course.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment/moment.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h3>Add Course</h3>
+    <hr>
+
+    <div id="add-course-form" style="display: block;">
+        <form id="courseForm" th:action="@{saveCourse}" method="post">
+            <div class="mb-3">
+                <label for="courseName" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="courseName" name="courseName" required>
+            </div>
+            <div class="mb-3">
+                <label for="courseDescription" class="form-label">Description:</label>
+                <input type="text" class="form-control" id="courseDescription" name="courseDescription" required>
+            </div>
+            <div>
+                <label for="credits" class="form-label">Credits:</label>
+                <input type="number" class="form-control" id="credits" name="credits" required>
+            </div>
+            <button type="submit" class="btn btn-primary submit" onclick="addCourse()">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
