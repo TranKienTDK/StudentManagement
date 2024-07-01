@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:spring="http://www.springframework.org/schema/data/rest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="/css/update-student-form.css"/>
+    <script src="/js/update-student.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <h3>Update Student</h3>
+    <hr>
+
+    <div id="update-student-form" style="display: block">
+        <form id="updateStudentForm" th:object="${student}" method="post">
+            <input type="hidden" id="studentId" th:value="*{studentId}"/>
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name:</label>
+                <input type="text" class="form-control" id="fullName" th:field="*{fullName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="dateOfBirth" class="form-label">Date of Birth:</label>
+                <input type="date" class="form-control" id="dateOfBirth" th:field="*{dateOfBirth}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number:</label>
+                <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address:</label>
+                <input type="text" class="form-control" id="address" th:field="*{address}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

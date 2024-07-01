@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="/css/student/student-info.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="sidebar-name">STUDENT HOME</h2>
+    <ul>
+        <li><a href="/studentHome">HOME</a></li>
+        <li><a href="/student-info" id="student-info">THÔNG TIN CÁ NHÂN</a></li>
+        <li><a href="/register-courses">ĐĂNG KÝ HỌC PHẦN</a></li>
+        <li><a href="/logout">ĐĂNG XUẤT</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h1 class="student-info-title">THÔNG TIN SINH VIÊN</h1>
+    <div id="studentDetails">
+        <div id="studentCover">
+            <img id="studentImage" src="" alt="student avatar">
+        </div>
+        <p><strong>ID:</strong> <span th:text="${student.studentId}"></span></p>
+        <p><strong>Full Name:</strong> <span th:text="${student.fullName}"></span></p>
+        <p><strong>Date of Birth:</strong> <span th:text="${#dates.format(student.dateOfBirth, 'yyyy-MM-dd')}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+        <p><strong>Phone Number:</strong> <span th:text="${student.phoneNumber}"></span></p>
+        <p><strong>Address:</strong> <span th:text="${student.address}"></span></p>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 <span th:text="${student.fullName}"></span>. All rights reserved.</p>
+</div>
+
+<script>
+    var img = document.getElementById("studentImage")
+    var currentImg = localStorage.getItem("uploadedImage")
+    if (currentImg) {
+        img.src = currentImg;
+    }
+</script>
+
+</body>
+</html>

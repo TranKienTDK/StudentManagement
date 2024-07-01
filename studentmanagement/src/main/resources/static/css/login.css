@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, #EEF7FF, #CDE8E5); /* Gradient background */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-header {
+    color: #4D869C; /* Dark teal color for the main header */
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.intro-text {
+    margin-bottom: 20px;
+}
+
+.intro-text h2 {
+    color: #4D869C; /* Dark teal color for the heading */
+    margin-bottom: 10px;
+}
+
+.intro-text p {
+    color: #4D869C; /* Dark teal color for the paragraphs */
+    font-size: 16px;
+}
+
+.card {
+    background-color: #CDE8E5; /* Light teal background for the card */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background-color: #7AB2B2; /* Medium teal background for the card header */
+    color: #fff;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    padding: 1rem;
+}
+
+.form-group label {
+    color: #4D869C; /* Dark teal color for labels */
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #7AB2B2; /* Medium teal border for input fields */
+    padding: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #4D869C; /* Dark teal background for the button */
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #7AB2B2; /* Medium teal background for the button on hover */
+}
+
+.toast-header {
+    background-color: #C40C0C; /* Red background for toast header */
+    color: #fff;
+}
+
+.toast-body {
+    background-color: #CDE8E5; /* Light teal background for toast body */
+}
+
+h5 {
+    text-align: center;
+}
+
+
+

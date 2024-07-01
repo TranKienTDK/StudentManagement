@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Home</title>
+    <link rel="stylesheet" href="/css/student/student-home.css">
+    <script src="/js/home-image.js"></script>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2 class="sidebar-name">STUDENT HOME</h2>
+    <ul>
+        <li><a href="/studentHome" id="home-page">HOME</a></li>
+        <li><a href="/student-info">THÔNG TIN CÁ NHÂN</a></li>
+        <li><a href="/register-courses">ĐĂNG KÝ HỌC PHẦN</a></li> <!-- Thay đổi href -->
+        <li><a href="/logout">ĐĂNG XUẤT</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="container-content">
+        <div id="profile-background"></div>
+        <div class="image">
+            <div id="imageContainer">
+                <img id="uploadedImage" src="" alt="Uploaded Image">
+            </div>
+            <label for="imageInput" class="custom-file-upload">
+                Upload Image
+            </label>
+            <input type="file" id="imageInput" accept="image/*" onchange="uploadImage()">
+            <br>
+        </div>
+
+        <div id="studentInfo">
+            <h1 th:text="${student.fullName}"> </h1>
+            <p>Mã sinh viên: <span th:text="${student.studentId}"></span></p>
+            <p>Email: <span th:text="${student.email}"></span></p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 <span th:text="${student.fullName}"></span>. All rights reserved.</p>
+</div>
+
+</body>
+</html>
