@@ -21,4 +21,8 @@ public interface CourseRegistrationRepository extends JpaRepository<CourseRegist
             "FROM CourseRegistration cr " +
             "WHERE (cr.status = 'registered' OR cr.status = 'unregistered') AND cr.course.courseId = :courseId")
     List<StudentRegistrationSummary> findAllRegisteredStudentSummariesByCourseId(@Param("courseId") Long courseId);
+
+    // Phương thức tùy chỉnh để lấy các khóa học của một sinh viên dựa trên studentId
+    @Query("SELECT cr FROM CourseRegistration cr WHERE cr.student.studentId = :studentId")
+    List<CourseRegistration> findCoursesByStudentId(@Param("studentId") Long studentId);
 }

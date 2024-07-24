@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khóa học đã đăng ký</title>
+    <link rel="stylesheet" href="/css/student/students.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<p><a href="/home-page">Quay về trang chủ</a></p>
+<h1>Danh sách khóa học đã đăng ký của sinh viên: <span id="studentName"></span></h1>
+<table id="courseTable">
+    <thead>
+    <tr>
+        <th>Mã khóa học</th>
+        <th>Tên khóa học</th>
+        <th>Ngày đăng ký</th>
+        <th>Trạng thái</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Dữ liệu khóa học sẽ được thêm tự động bởi JavaScript -->
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        // Lấy studentId từ URL (ví dụ: /students/1234/courses)
+        var studentId = window.location.pathname.split('/')[2];
+
+        $.ajax({
+            type: "GET",
+            url: "/api/registration/student/" + studentId + "/courses",
+            success: function(data) {
+                // Xử lý dữ liệu nhận được từ API
+                var courses = data;
+                var tableBody = $('#courseTable tbody');
+                tableBody.empty(); // Xóa nội dung cũ của bảng
+
+                // Hiển thị tên sinh viên
+                var studentName = courses.length > 0 ? courses[0].student.fullName : "Không có dữ liệu";
+                $('#studentName').text(studentName);
+
+                courses.forEach(function(registration) {
+                    var course = registration.course;
+                    var row = '<tr>' +
+                        '<td>' + course.courseId + '</td>' +
+                        '<td>' + course.courseName + '</td>' +
+                        '<td>' + new Date(registration.registrationDate).toISOString().slice(0, 10) + '</td>' +
+                        '<td>' + registration.status + '</td>' +
+                        '</tr>';
+                    tableBody.append(row);
+                });
+            },
+            error: function() {
+                alert("Đã xảy ra lỗi khi lấy dữ liệu từ API.");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

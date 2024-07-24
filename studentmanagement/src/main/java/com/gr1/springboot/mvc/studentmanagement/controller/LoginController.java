@@ -283,4 +283,36 @@ public class LoginController {
         return "students";
     }
 
+    // MỚI: Hiển thị danh sách các khóa học mà 1 sinh viên đã đăng ký
+    @GetMapping("/students/{studentId}/courses")
+    public String showStudentCourses(@PathVariable Long studentId, Model model) {
+        // Lấy thông tin sinh viên từ cơ sở dữ liệu
+        Optional<Student> studentOptional = Optional.ofNullable(studentService.findById(studentId));
+
+        if (studentOptional.isPresent()) {
+            Student student = studentOptional.get();
+            model.addAttribute("student", student);
+
+            // Lấy danh sách các khóa học đã đăng ký của sinh viên
+            List<CourseRegistration> registeredCourses = courseRegistrationService.getRegistratedCourses(studentId);
+
+            // Tạo danh sách dữ liệu hiển thị trong view
+            List<StudentRegistrationSummary> studentCourses = registeredCourses.stream()
+                    .map(reg -> new StudentRegistrationSummary(
+                            student.getStudentId(),
+                            student.getFullName(),
+                            reg.getCourse().getCourseId(),
+                            reg.getCourse().getCourseName(),
+                            reg.getRegistrationDate(),
+                            reg.getStatus()
+                    ))
+                    .collect(Collectors.toList());
+
+            model.addAttribute("courses", studentCourses);
+            return "courses"; // Tên của view (HTML template) để hiển thị danh sách khóa học
+        } else {
+            return "redirect:/login-form";
+        }
+    }
+
 }

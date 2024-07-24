@@ -79,4 +79,10 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     public List<StudentRegistrationSummary> getAllStudentRegistrationSummaries(Long courseId) {
         return courseRegistrationRepository.findAllRegisteredStudentSummariesByCourseId(courseId);
     }
+
+    @Override
+    // Lay danh sach khoa hoc da dang ky cua sinh vien theo studentId
+    public List<CourseRegistration> getRegisteredCourses(Long studentId) {
+        return courseRegistrationRepository.findCoursesByStudentId(studentId);
+    }
 }

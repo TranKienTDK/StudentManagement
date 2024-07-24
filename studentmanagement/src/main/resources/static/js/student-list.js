@@ -22,7 +22,7 @@ function displayStudents(data) {
         var row = document.createElement('tr');
         var dateOfBirth = new Date(student.dateOfBirth).toISOString().slice(0, 10);
         row.innerHTML = `<td>${student.studentId}</td>
-                         <td>${student.fullName}</td>
+                         <td><a href="/students/${student.studentId}/courses">${student.fullName}</a></td>
                          <td>${dateOfBirth}</td>
                          <td>${student.email}</td>
                          <td>${student.phoneNumber}</td>

@@ -63,4 +63,10 @@ public class CourseRegistrationController {
     public List<StudentRegistrationSummary> getRegisteredStudentSummariesByCourseId(@RequestParam Long courseId) {
         return courseRegistrationService.getAllStudentRegistrationSummaries(courseId);
     }
+
+    @GetMapping("/student/{studentId}/courses")
+    public ResponseEntity<List<CourseRegistration>> getCoursesByStudentId(@PathVariable Long studentId) {
+        List<CourseRegistration> registrations = courseRegistrationService.getRegisteredCourses(studentId);
+        return ResponseEntity.ok(registrations);
+    }
 }

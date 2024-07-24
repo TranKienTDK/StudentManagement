@@ -14,4 +14,6 @@ public interface CourseRegistrationService {
     List<CourseRegistration> getRegistratedCourses(Long studentId);
 
     List<StudentRegistrationSummary> getAllStudentRegistrationSummaries(Long courseId);
+
+    List<CourseRegistration> getRegisteredCourses(Long studentId);
 }
